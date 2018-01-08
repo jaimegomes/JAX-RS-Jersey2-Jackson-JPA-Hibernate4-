@@ -1,15 +1,15 @@
-/**
- * 
- */
 package br.com.netprecision.prova.resource;
 
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import br.com.netprecision.prova.dao.OrderDAOImpl;
 
@@ -23,17 +23,17 @@ public class OrderResource {
 	private OrderDAOImpl orderDAOImpl;
 
 	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/criarPedido")
 	public long criarPedido() throws Exception {
 		orderDAOImpl = new OrderDAOImpl();
 		return orderDAOImpl.criarPedido();
 	}
 
-	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@PUT
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/adicioneProdutoNoPedido/{id_pedido}/{cd_produto}/{qt_produto}")
 	public byte adicioneProdutoNoPedido(@PathParam("id_pedido") long id_pedido,
 			@PathParam("cd_produto") String cd_produto, @PathParam("qt_produto") int qt_produto) throws Exception {
@@ -41,9 +41,9 @@ public class OrderResource {
 		return orderDAOImpl.adicioneProdutoNoPedido(id_pedido, cd_produto, qt_produto);
 	}
 
-	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@PUT
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/retireProdutoDoPedido/{id_pedido}/{cd_produto}/{qt_retirada}")
 	public byte retireProdutoDoPedido(@PathParam("id_pedido") long id_pedido,
 			@PathParam("cd_produto") String cd_produto, @PathParam("qt_retirada") int qt_retirada) throws Exception {
@@ -51,18 +51,17 @@ public class OrderResource {
 		return orderDAOImpl.retireProdutoDoPedido(id_pedido, cd_produto, qt_retirada);
 	}
 
-	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/calculePrecoTotalPedido/{id_pedido}")
 	public float calculePrecoTotalPedido(@PathParam("id_pedido") long id_pedido) throws Exception {
 		orderDAOImpl = new OrderDAOImpl();
 		return orderDAOImpl.calculePrecoTotalPedido(id_pedido);
 	}
 
-	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@PUT
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/fechePedido/{id_pedido}/{vl_pagamento}")
 	public float fechePedido(@PathParam("id_pedido") long id_pedido, @PathParam("vl_pagamento") float vl_pagamento)
 			throws Exception {
@@ -71,9 +70,8 @@ public class OrderResource {
 
 	}
 
-	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/calculePrecoTotalPedido/")
 	public float calculePrecoTotalPedido(Map<String, Integer> produtos) throws Exception {
 		orderDAOImpl = new OrderDAOImpl();

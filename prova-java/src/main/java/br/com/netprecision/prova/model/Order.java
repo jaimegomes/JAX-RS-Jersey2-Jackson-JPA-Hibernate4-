@@ -10,16 +10,18 @@ public class Order {
 	private long id;
 	private List<ProductEntity> products;
 	private float finalPrice;
+	private Boolean closed;
 
 	public Order() {
 
 	}
 
-	public Order(long id, List<ProductEntity> products, float finalPrice) {
+	public Order(long id, List<ProductEntity> products, float finalPrice, Boolean closed) {
 		super();
 		this.id = id;
 		this.products = products;
 		this.finalPrice = finalPrice;
+		this.closed = closed;
 	}
 
 	public long getId() {
@@ -44,6 +46,14 @@ public class Order {
 
 	public void setFinalPrice(float finalPrice) {
 		this.finalPrice = finalPrice;
+	}
+
+	public Boolean getClosed() {
+		return closed;
+	}
+
+	public void setClosed(Boolean closed) {
+		this.closed = closed;
 	}
 
 }

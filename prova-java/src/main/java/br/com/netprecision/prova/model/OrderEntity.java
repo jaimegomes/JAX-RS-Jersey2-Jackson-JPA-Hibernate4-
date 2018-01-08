@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author Jaime
@@ -33,6 +32,9 @@ public class OrderEntity implements Serializable {
 	@Column(name = "finalPrice")
 	private float finalPrice;
 
+	@Column(name = "closed")
+	private Boolean closed;
+
 	public OrderEntity() {
 	}
 
@@ -40,10 +42,11 @@ public class OrderEntity implements Serializable {
 	 * @param products
 	 * @param finalPrice
 	 */
-	public OrderEntity(List<ProductEntity> products, float finalPrice) {
+	public OrderEntity(List<ProductEntity> products, float finalPrice, Boolean closed) {
 		super();
 		this.products = products;
 		this.finalPrice = finalPrice;
+		this.closed = closed;
 	}
 
 	/**
@@ -89,6 +92,14 @@ public class OrderEntity implements Serializable {
 	 */
 	public void setFinalPrice(float finalPrice) {
 		this.finalPrice = finalPrice;
+	}
+
+	public Boolean getClosed() {
+		return closed;
+	}
+
+	public void setClosed(Boolean closed) {
+		this.closed = closed;
 	}
 
 	/*
