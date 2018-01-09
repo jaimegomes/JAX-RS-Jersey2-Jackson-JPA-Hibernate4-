@@ -1,7 +1,5 @@
 package br.com.netprecision.prova.resource;
 
-import java.util.Map;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -70,12 +68,16 @@ public class OrderResource {
 
 	}
 
-	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Path("/calculePrecoTotalPedido/")
-	public float calculePrecoTotalPedido(Map<String, Integer> produtos) throws Exception {
-		orderDAOImpl = new OrderDAOImpl();
-		return orderDAOImpl.calculePrecoTotalPedido(produtos);
-	}
+	// TODO PROBELA NO @QueryParam com o map, ver como resolver
+	/*
+	 * @GET
+	 * 
+	 * @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	 * 
+	 * @Path("/calculePrecoTotalPedido/") public float
+	 * calculePrecoTotalPedido(@QueryParam("produtos") Map<String, Integer>
+	 * produtos) throws Exception { orderDAOImpl = new OrderDAOImpl(); return
+	 * orderDAOImpl.calculePrecoTotalPedido(produtos); }
+	 */
 
 }

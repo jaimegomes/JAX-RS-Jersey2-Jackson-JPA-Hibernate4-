@@ -143,6 +143,8 @@
 			<version>2.17</version> <!-- Make sure the Jersey matches the one you are currently using -->
 		</dependency>
 
+		
+
 
 
 		<!-- if you are using Jersey client specific features -->
